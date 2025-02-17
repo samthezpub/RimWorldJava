@@ -1,17 +1,20 @@
 package builder;
 
-import entity.Character;
+import entity.CharacterContext;
 import enums.CharacterTraits;
+import interfaces.CharacterState;
 
 public class CharacterBuilder {
     private String name;
     private int age;
     private CharacterTraits[] traits;
+    private CharacterState state;
 
-    public CharacterBuilder(String name, int age, CharacterTraits[] traits) {
+    public CharacterBuilder(String name, int age, CharacterTraits[] traits, CharacterState state) {
         this.name = name;
         this.age = age;
         this.traits = traits;
+        this.state = state;
     }
 
     public String getName() {
@@ -32,8 +35,14 @@ public class CharacterBuilder {
     public void setTraits(CharacterTraits[] traits) {
         this.traits = traits;
     }
+    public CharacterState getState() {
+        return state;
+    }
+    public void setState(CharacterState state) {
+        this.state = state;
+    }
 
-    public Character build(){
-        return new Character(this);
+    public CharacterContext build(){
+        return new CharacterContext(this);
     }
 }
